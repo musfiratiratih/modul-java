@@ -155,6 +155,10 @@ public class Siswa implements UserInterface {
         System.out.println("");
     }
 
+    public Integer getJumlahSiswa() {
+        return this.nama.size();
+    }
+
     public void updateStatus(int idSiswa, boolean status) {
         this.status.set(idSiswa, status);
     }
@@ -422,9 +426,15 @@ public class Main {
         input.close();
     }
 
-    public static Integer pilihSiswa() {
-        System.out.print("Silahkan masukkan id siswa : ");
-        return input.nextInt();
+    public static Integer pilihSiswa(){
+        System.out.println("Silahkan masukkan id siswa : ");
+        int pilih = input.nextInt();
+        if (pilih >= siswa.getJumlahSiswa()){
+            System.out.println("Siswa tidak ada");
+            System.out.println("");
+            System.exit(0);
+        }
+        return pilih;
     }
 
     public static Integer pilihMenu() {
